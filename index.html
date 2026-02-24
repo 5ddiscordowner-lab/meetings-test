@@ -2,21 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>District 25 AA Meetings</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>District 25 AA</title>
   <link rel="stylesheet" href="https://unpkg.com/tsml-ui@1/dist/tsml-ui.css" />
-  <style>
-    body { margin: 0; background-color: #f8f9fa; }
-    #tsml-ui { min-height: 100vh; }
-  </style>
 </head>
 <body>
-
   <div id="tsml-ui" data-src="./meetings.csv">
-    <p style="text-align:center; padding-top:50px;">Loading Meetings...</p>
+    <p id="status-message" style="text-align:center; padding-top:50px;">Loading Meetings...</p>
   </div>
 
   <script src="https://unpkg.com/tsml-ui@1/dist/tsml-ui.js"></script>
-
+  
+  <script>
+    // This helper script checks if the file is actually readable by the engine
+    fetch('./meetings.csv')
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.text();
+      })
+      .then(data => console.log('CSV Data Loaded Successfully'))
+      .catch(error => {
+        document.getElementById('status-message').innerHTML = 'Error: Cannot read meetings.csv. ' + error.message;
+      });
+  </script>
 </body>
 </html>
