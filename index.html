@@ -7,21 +7,28 @@
 </head>
 <body>
   <div id="tsml-ui" data-src="./meetings.csv">
-    <p id="status-message" style="text-align:center; padding-top:50px;">Loading Meetings...</p>
+    <p id="status" style="text-align:center; padding-top:50px; font-family: sans-serif;">
+      Connecting to meetings.csv...
+    </p>
   </div>
 
   <script src="https://unpkg.com/tsml-ui@1/dist/tsml-ui.js"></script>
   
   <script>
-    // This helper script checks if the file is actually readable by the engine
-    fetch('./meetings.csv')
+    // Force a check to see if the file is actually readable
+    fetch('./meetings.csv', { cache: "no-store" })
       .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
+        if (!response.ok) throw new Error('File not found (404)');
         return response.text();
       })
-      .then(data => console.log('CSV Data Loaded Successfully'))
-      .catch(error => {
-        document.getElementById('status-message').innerHTML = 'Error: Cannot read meetings.csv. ' + error.message;
+      .then(text => {
+        console.log('File found! First line is: ' + text.split('\n')[0]);
+        if (!text.includes('name,day,time')) {
+          document.getElementById('status').innerHTML = '⚠️ Error: CSV headers are incorrect.';
+        }
+      })
+      .catch(err => {
+        document.getElementById('status').innerHTML = '⚠️ Error: ' + err.message;
       });
   </script>
 </body>
