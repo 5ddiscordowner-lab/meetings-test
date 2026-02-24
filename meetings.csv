@@ -1,2 +1,2 @@
 name,day,time,end_time,district,location,address,region,types,notes,conference_url,coordinates,slug,updated
-Test Meeting,Monday,6:30 PM,7:30 PM,District 25,Zoom,"Seattle, WA",Seattle,"Discussion, Open",Zoom ID: 123 456,https://zoom.us,,test-meeting,2/24/2026
+Test Meeting,Monday,6:30 PM,7:30 PM,District 25,Zoom,Seattle WA,Seattle,Open,Zoom ID 123456,https://zoom.us,,test-meeting,2/24/2026
