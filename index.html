@@ -2,14 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>District 25 Test</title>
-  <base href="https://5ddiscordowner-lab.github.io/meetings-test/">
+  <title>District 25 AA Meetings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://unpkg.com/tsml-ui@1/dist/tsml-ui.css" />
+  <style>
+    body { margin: 0; background-color: #f8f9fa; }
+    #tsml-ui { min-height: 100vh; }
+  </style>
 </head>
 <body>
-  <div id="tsml-ui" data-src="meetings.csv">
-    <p style="text-align:center; padding-top:50px;">If this message stays here, the CSV file cannot be found.</p>
+
+  <div id="tsml-ui" data-src="https://5ddiscordowner-lab.github.io/meetings-test/meetings.csv">
+    <p style="text-align:center; padding-top:50px;">Connecting to meeting data...</p>
   </div>
+
   <script src="https://unpkg.com/tsml-ui@1/dist/tsml-ui.js"></script>
+
 </body>
 </html>
